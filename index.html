@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arin Games Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin:0;
+  background:#0f0f0f;
+  font-family:Arial, sans-serif;
+  color:white;
+  text-align:center;
+}
+
+header {
+  padding:40px;
+  font-size:40px;
+  font-weight:bold;
+  background:linear-gradient(90deg,#1a1a1a,#222);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+  padding:40px;
+}
+
+.card {
+  background:#1c1c1c;
+  border-radius:20px;
+  padding:30px;
+  cursor:pointer;
+  transition:0.2s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.5);
+}
+
+.card:hover {
+  transform:translateY(-6px);
+  background:#2a2a2a;
+}
+
+footer {
+  padding:20px;
+  opacity:0.5;
+}
+</style>
+</head>
+<body>
+
+<header>🎮 Arin Games Hub</header>
+
+<div class="grid">
+  <div class="card" onclick="location.href='game1.html'">
+    💰 Money Clicker
+  </div>
+
+  <div class="card" onclick="location.href='game2.html'">
+    🟥 Dodge Game
+  </div>
+
+  <div class="card" onclick="location.href='game3.html'">
+    🏀 Mini Basketball
+  </div>
+
+  <div class="card" onclick="location.href='game4.html'">
+    🧠 Reaction Test
+  </div>
+</div>
+
+<footer>Created by Arin</footer>
+
+</body>
+</html>
