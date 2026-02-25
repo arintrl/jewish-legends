@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Money Clicker PRO</title>
+<style>
+body {
+  background: #0f0f0f;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+#money {
+  font-size: 32px;
+  margin: 10px;
+}
+
+#rebirths {
+  font-size: 18px;
+  color: gold;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  margin: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.click-btn {
+  background: gold;
+  color: black;
+}
+
+.upgrade-btn {
+  background: limegreen;
+}
+
+.rebirth-btn {
+  background: crimson;
+}
+
+a {
+  color: cyan;
+  display: block;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>💰 Money Clicker PRO</h1>
+
+<div id="money">$0</div>
+<div id="rebirths">Rebirths: 0</div>
+
+<button class="click-btn" onclick="clickMoney()">Click for Money</button>
+
+<br>
+
+<button class="upgrade-btn" onclick="buyClickUpgrade()">
+Upgrade Click (+1) - $50
+</button>
+
+<button class="upgrade-btn" onclick="buyAuto()">
+Buy Auto Clicker - $100
+</button>
+
+<br>
+
+<button class="rebirth-btn" onclick="rebirth()">
+Rebirth (Requires $10,000)
+</button>
+
+<a href="index.html">⬅ Back to Hub</a>
+
+<script>
+let money = 0;
+let clickPower = 1;
+let autoIncome = 0;
+let rebirths = 0;
+
+let clickUpgradeCost = 50;
+let autoCost = 100;
+let rebirthCost = 10000;
+
+function updateDisplay() {
+  document.getElementById("money").innerText = "$" + Math.floor(money);
+  document.getElementById("rebirths").innerText = "Rebirths: " + rebirths;
+}
+
+function clickMoney() {
+  money += clickPower * (1 + rebirths);
+  updateDisplay();
+}
+
+function buyClickUpgrade() {
+  if (money >= clickUpgradeCost) {
+    money -= clickUpgradeCost;
+    clickPower += 1;
+    clickUpgradeCost = Math.floor(clickUpgradeCost * 1.5);
+    document.querySelectorAll(".upgrade-btn")[0].innerText =
+      "Upgrade Click (+" + clickPower + ") - $" + clickUpgradeCost;
+    updateDisplay();
+  }
+}
+
+function buyAuto() {
+  if (money >= autoCost) {
+    money -= autoCost;
+    autoIncome += 1;
+    autoCost = Math.floor(autoCost * 1.7);
+    document.querySelectorAll(".upgrade-btn")[1].innerText =
+      "Buy Auto Clicker (" + autoIncome + ") - $" + autoCost;
+    updateDisplay();
+  }
+}
+
+function rebirth() {
+  if (money >= rebirthCost) {
+    rebirths += 1;
+    money = 0;
+    clickPower = 1;
+    autoIncome = 0;
+    clickUpgradeCost = 50;
+    autoCost = 100;
+    updateDisplay();
+  }
+}
+
+setInterval(function() {
+  money += autoIncome * (1 + rebirths);
+  updateDisplay();
+}, 1000);
+
+updateDisplay();
+</script>
+
+</body>
+</html>
